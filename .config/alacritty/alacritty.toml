@@ -1,0 +1,23 @@
+[font]
+size = 12
+
+[font.bold]
+family = "CaskaydiaCoveNerdFont"
+style = "Bold"
+
+[font.bold_italic]
+family = "CaskaydiaCoveNerdFont"
+style = "Bold Italic"
+
+[font.italic]
+family = "CaskaydiaCoveNerdFont"
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaCoveNerdFont"
+style = "Regular"
+
+[window]
+dynamic_title = true
+dynamic_padding = true
+
