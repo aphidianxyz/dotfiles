@@ -93,7 +93,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     // open programs
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Space hotkey-overlay-title="Run an Application: Rofi" { spawn "rofi" "-show" "drun"; }
+    Alt+Tab hotkey-overlay-title="Focus a window: Rofi" { spawn "rofi" "-show" "window"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // volume control
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
