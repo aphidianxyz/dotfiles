@@ -26,12 +26,12 @@ configuration {
     border-color:                @foreground;
     spacing:                     2;
     separatorcolor:              @selected-normal-background;
-    urgent-background:           rgba ( 0, 43, 55, 100 % );
+    urgent-background:           rgba ( 186, 122, 56, 100% );
     selected-urgent-background:  @selected-active-foreground;
     alternate-urgent-foreground: @urgent-foreground;
     background-color:            rgba ( 0, 0, 0, 0 % );
     alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 0, 43, 55, 100 % );
+    active-background:           @alternate-active-background;
     selected-active-background:  rgba ( 0, 54, 66, 100 % );
 }
 window {
