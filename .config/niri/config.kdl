@@ -21,8 +21,22 @@ output "HDMI-A-1" {
 }
 
 layout {
+    insert-hint {
+        color "#F5EDD1"
+    }
+
+    tab-indicator {
+        width 4
+        gap -4
+        length total-proportion=0.5
+        active-color "#89955B"
+        inactive-color "#1E2A18"
+    }
+
     gaps 0
+
     center-focused-column "never"
+    always-center-single-column
     
     preset-column-widths {
         proportion 0.25
@@ -46,6 +60,13 @@ layout {
 
 overview {
     backdrop-color "#1b2515"
+    workspace-shadow {
+        off
+    }
+}
+
+hotkey-overlay {
+    skip-at-startup
 }
 
 prefer-no-csd
@@ -53,7 +74,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d@%H-%M-%S.png"
 
 animations {
-    slowdown 0.33
+    slowdown 0.25
 }
 
 // window rules
@@ -74,14 +95,11 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     // volume control
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
     // close windows
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
