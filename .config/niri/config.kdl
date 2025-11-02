@@ -94,6 +94,10 @@ binds {
     // open programs
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Run an Application: Rofi" { spawn "rofi" "-show" "drun"; }
+    Mod+Shift+Space hotkey-overlay-title="Run a command: Rofi" { spawn "rofi" "-show" "run"; }
+    Mod+F1 hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
+    Mod+F2 hotkey-overlay-title="Open Discord (Vesktop)" { spawn "vesktop"; }
+    Mod+F3 hotkey-overlay-title="Open Telegram" { spawn "Telegram"; }
     Alt+Tab hotkey-overlay-title="Focus a window: Rofi" { spawn "rofi" "-show" "window"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // volume control
