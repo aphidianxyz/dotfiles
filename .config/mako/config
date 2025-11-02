@@ -1,0 +1,8 @@
+border-color=#5B741B
+text-color=#1E2A18
+font=CaskaydiaCoveNerdFont
+background-color=#F5EDD1
+icon-path="/usr/share/icons/Adwaita/"
+text-alignment=right
+anchor=bottom-right
+outer-margin=0,0,20,0
