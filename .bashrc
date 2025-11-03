@@ -20,15 +20,15 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 	source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
-fastfetch --config "/home/john/.config/fastfetch/fastfetch.jsonc" --logo "arch_small"
+fastfetch --config "$HOME/.config/fastfetch/fastfetch.jsonc" --logo "arch_small"
 # set PROMPT_COMMAND
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 
 source /usr/share/nvm/init-nvm.sh
 
 # Created by `pipx` on 2023-12-20 19:54:51
-export PATH="$PATH:/home/john/.local/bin"
-export PATH="$PATH:/home/john/go/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 # set terminal titles
 update_terminal_title() {
