@@ -26,8 +26,8 @@ layout {
     }
 
     tab-indicator {
-        width 4
-        gap -4
+        width 2
+        gap -2
         length total-proportion=0.5
         active-color "#89955B"
         inactive-color "#1E2A18"
@@ -51,7 +51,7 @@ layout {
     }
     
     border {
-        width 4
+        width 2
         active-color "#BA7A3B"
         inactive-color "#1E2A18"
         urgent-color "#89955B"
