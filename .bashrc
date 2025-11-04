@@ -40,3 +40,11 @@ update_terminal_title() {
 
 # Set PROMPT_COMMAND to call update_terminal_title before each prompt
 PROMPT_COMMAND="update_terminal_title"
+
+# colorizing console output
+# colorizing man by hacking it's pagers, less & most
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANROFFOPT="-P -c"
+# less
+export LESS='-R --use-color -Dd+r$Du+b$'
+
