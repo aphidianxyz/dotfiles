@@ -4,9 +4,8 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
 PS1='┌─{\[\e[92m\]\u\[\e[0m\]\[\e[38;5;208m\]@\[\e[0m\]\[\e[93m\]\H\[\e[0m\]}-{\[\e[92m\]\t\[\e[0m\]}\n└─[\[\e[92m\]\w\[\e[0m\] \[\e[38;5;208m\]|\[\e[92m\] $(git branch --show-current 2>/dev/null)\[\e[0m\]]\[\e[38;5;208m\]\$\[\e[0m\] '
-export PROMPT_DIRTRIM=4
+export PROMPT_DIRTRIM=3
 
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
@@ -21,6 +20,7 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 fi
 
 fastfetch --config "$HOME/.config/fastfetch/fastfetch.jsonc" --logo "arch_small"
+
 # set PROMPT_COMMAND
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 
