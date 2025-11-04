@@ -5,8 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
-export PROMPT_DIRTRIM=3
+PS1='┌─{\[\e[92m\]\u\[\e[0m\]\[\e[38;5;208m\]@\[\e[0m\]\[\e[93m\]\H\[\e[0m\]}-{\[\e[92m\]\t\[\e[0m\]}\n└─[\[\e[92m\]\w\[\e[0m\] \[\e[38;5;208m\]|\[\e[92m\] $(git branch --show-current 2>/dev/null)\[\e[0m\]]\[\e[38;5;208m\]\$\[\e[0m\] '
+export PROMPT_DIRTRIM=4
 
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
