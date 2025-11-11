@@ -1,5 +1,5 @@
 [font]
-size = 12
+size = 14
 
 [font.bold]
 family = "CaskaydiaCoveNerdFont"
@@ -24,3 +24,4 @@ dynamic_padding = true
 [colors.primary]
 background = "#151914"
 foreground = "#F5EDD1"
+
