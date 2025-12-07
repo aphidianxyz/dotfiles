@@ -48,3 +48,5 @@ export MANROFFOPT="-P -c"
 # less
 export LESS='-R --use-color -Dd+r$Du+b$'
 
+# java
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/

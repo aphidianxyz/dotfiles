@@ -74,7 +74,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d@%H-%M-%S.png"
 
 animations {
-    slowdown 0.25
+    slowdown 0.33
 }
 
 // window rules
@@ -98,7 +98,6 @@ binds {
     Mod+F1 hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
     Mod+F2 hotkey-overlay-title="Open Discord (Vesktop)" { spawn "vesktop"; }
     Mod+F3 hotkey-overlay-title="Open Telegram" { spawn "Telegram"; }
-    Alt+Tab hotkey-overlay-title="Focus a window: Rofi" { spawn "rofi" "-show" "window"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // volume control
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
