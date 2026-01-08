@@ -99,7 +99,8 @@ binds {
     Mod+Tab { spawn "rofi" "-show" "window"; }
     Mod+F1 hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
     Mod+F2 hotkey-overlay-title="Open Discord (Vesktop)" { spawn "vesktop"; }
-    Mod+F3 hotkey-overlay-title="Open Telegram" { spawn "Telegram"; }
+    // open telegram with gtk file chooser pref
+    Mod+F3 hotkey-overlay-title="Open Telegram" { spawn "env" "QT_QPA_PLATFORMTHEME=xdgdesktopportal" "Telegram"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // volume control
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
