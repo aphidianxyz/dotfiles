@@ -1,53 +1,83 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
-vim.g.mapleader = " "
+-- leader
+vim.g.mapleader = ' '
+vim.g.localleader = ' '
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+-- disable base file manager for nvim
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+-- plugins
+vim.pack.add({
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+
+    { src = 'https://github.com/ribru17/bamboo.nvim' },
+
+    -- statusbar
+    -- { src = 'https://github.com/nvim-tree/nvim-web-devicons' }, -- also a req. for nvim-tree
+    { src = 'https://github.com/nvim-lualine/lualine.nvim' },
+
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
+
+    { src = 'https://github.com/akinsho/bufferline.nvim', tag = '*' },
+
+    -- lsp 
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = 'https://github.com/mason-org/mason.nvim' },
+    { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
+    { src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' },
+
+    { src = 'https:/github.com/rachartier/tiny-inline-diagnostic.nvim' },
+
+    -- auto-completion
+    { src = 'https://github.com/nvim-mini/mini.completion' },
+    -- also a replacement dep for nvim-tree, and a regular dep for render-markdown
+    { src = 'https://github.com/nvim-mini/mini.icons' },
+
+    { src = 'https://github.com/nvim-mini/mini.clue' },
+
+    { src = 'https://github.com/lewis6991/gitsigns.nvim' },
+
+    { src = 'https://github.com/tpope/vim-fugitive' },
+
+    { src = 'https://github.com/catgoose/nvim-colorizer.lua' },
+
+    { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
+
+    { src = 'https://github.com/ibhagwan/fzf-lua' },
+
+    -- requires md+md_inline, html, latex & yaml treesitter parsers to work properly
+    { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
+
+    { src = 'https://github.com/numToStr/Comment.nvim' },
+
+})
+local inactive_plugins = vim.iter(vim.pack.get())
+    :filter(function(x) return not x.active end)
+    :map(function(x) return x.spec.name end)
+    :totable()
+
+if next(inactive_plugins) ~= nil then
+    vim.pack.del(inactive_plugins)
 end
 
-vim.opt.rtp:prepend(lazypath)
+-- autoload helper fn
+local function load_config_dir(dir)
+    -- $CONFIG/nvim/lua/[dir]
+    local config_dir_path = vim.fn.stdpath("config") .. "/lua/" .. dir
 
-local lazy_config = require "configs.lazy"
-
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "nvchad.autocmds"
-
-vim.schedule(function()
-  require "mappings"
-end)
-
--- stop cursor from jumping when pressing tab on a snippet
-local group = vim.api.nvim_create_augroup("LuaSnipUnlink", { clear = true })
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = group,
-  callback = function()
-    local ok, ls = pcall(require, "luasnip")
-    if not ok then return end
-
-    local buf = vim.api.nvim_get_current_buf()
-    if ls.session.current_nodes[buf] and not ls.session.jump_active then
-      ls.unlink_current()
+    if vim.fn.isdirectory(config_dir_path) == 0 then
+        return
     end
-  end,
-})
 
+    local configs = vim.fn.globpath(config_dir_path, "*.lua", false, true)
+
+    for _, config in ipairs(configs) do
+        local config_name = vim.fn.fnamemodify(config, ":t:r")
+        require(dir .. "." .. config_name)
+    end
+end
+
+-- configs
+load_config_dir("core")
+load_config_dir("plugins")
+load_config_dir("lsp")
