@@ -10,20 +10,6 @@ input {
     }
 }
 
-output "DVI-D-1" {
-    mode "1920x1080@60.0"
-    scale 1
-    transform "normal"
-    position x=0 y=-1080
-}
-
-output "HDMI-A-1" {
-    mode "2560x1440@60.0"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
-
 layout {
     insert-hint {
         color "#F5EDD1"
@@ -93,6 +79,12 @@ window-rule {
 }
 
 binds {
+    // -- laptop specific --
+    // brightness
+    XF86MonBrightnessUp { spawn "brightnessctl" "set" "50+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "50-"; }
+
+    // -- general -- 
     // overlay
     Mod+Shift+Slash { show-hotkey-overlay; }
     // open programs
