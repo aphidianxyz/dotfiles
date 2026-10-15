@@ -35,7 +35,7 @@ configuration {
     selected-active-background:  rgba ( 0, 54, 66, 100 % );
 }
 window {
-    width: 33%;
+    width: 66%;
     background-color: @background;
     border:           1;
     padding:          5;
