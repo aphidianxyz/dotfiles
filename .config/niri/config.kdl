@@ -78,6 +78,8 @@ window-rule {
     block-out-from "screen-capture"
 }
 
+// TODO: probably put app-specific keybinds into their own
+// sub-config file
 binds {
     // -- laptop specific --
     // brightness
@@ -97,6 +99,7 @@ binds {
     Mod+F2 hotkey-overlay-title="Open Discord (Vesktop)" { spawn "vesktop"; }
     // open telegram with gtk file chooser pref
     Mod+F3 hotkey-overlay-title="Open Telegram" { spawn "env" "QT_QPA_PLATFORMTHEME=xdgdesktopportal" "Telegram"; }
+    Mod+F4 hotkey-overlay-title="Open KeePassXC" { spawn "keepassxc"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     // volume control
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+"; }
