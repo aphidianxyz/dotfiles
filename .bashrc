@@ -24,11 +24,21 @@ fastfetch --config "$HOME/.config/fastfetch/fastfetch.jsonc" --logo "arch_small"
 # set PROMPT_COMMAND
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 
-source /usr/share/nvm/init-nvm.sh
+# -- could probably clean up these app-specific envvars into 
+# -- their own file(s)
+# source /usr/share/nvm/init-nvm.sh
 
 # Created by `pipx` on 2023-12-20 19:54:51
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/go/bin"
+# export PATH="$PATH:$HOME/.local/bin"
+# export PATH="$PATH:$HOME/go/bin"
+
+# java
+# export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
+
+# Added by LM Studio CLI (lms)
+# export PATH="$PATH:/home/aphids/.lmstudio/bin"
+# End of LM Studio CLI section
+
 
 # set terminal titles
 update_terminal_title() {
@@ -47,11 +57,4 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-P -c"
 # less
 export LESS='-R --use-color -Dd+r$Du+b$'
-
-# java
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/aphids/.lmstudio/bin"
-# End of LM Studio CLI section
 
